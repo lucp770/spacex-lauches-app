@@ -1,0 +1,198 @@
+
+:root{
+	--backgroundOne:  #2e4053;
+  --backgroundSecond: #abb2b9;
+  --orangeColor:  #e67e22;
+}
+
+
+body{
+  background-color: #2e4053;
+  color: white;
+}
+
+.App {
+  text-align: center;
+  margin-top: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rocket-img{
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.App h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PLOT CONTAINER */
+
+.plot-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pie-chart{
+  margin-right: 3rem;
+}
+
+
+/* search component */
+
+.search-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container div{
+  margin-right: 1rem;
+
+}
+
+.search-bar-container{
+    background-color: var(--backgroundSecond);
+    border-radius: .2rem;
+    width: 25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-text{
+  background-color: var(--backgroundSecond);
+  
+  border: none;
+  outline: none;
+
+  border-radius: .2rem;
+  width: 20rem;
+
+  padding: .3rem .7rem;
+
+  color: white;
+
+  font-weight: bold;
+}
+
+.search-btn{
+  background-color:  #e67e22 ;
+  padding: .25rem 2.5rem;
+  border-radius: .3rem;
+  /* font-weight: bold; */
+  border: none;
+
+}
+
+.search-btn:hover{
+  cursor: pointer;
+  filter: brightness(1.3);
+  font-weight: bold;
+}
+
+
+/* result container */
+
+.result-container{
+  background-color: gray;
+  width: 60rem;
+  height: 20rem;
+
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding:1rem 0;
+}
+
+.result-footer{
+
+  width: 100%;
+  text-align: right;
+}
+
+.result-container table{
+  width: 100%;
+  color:black;
+}
+
+
+.result-footer span{
+  background-color: #e67e22;
+  margin: 0 .5rem;
+  border-radius: .3rem;
+
+  text-align: center;
+  padding: .2rem .3rem;
+}
+
+.result-footer span:hover{
+  cursor: pointer;
+  filter: brightness(1.3);
+  font-weight: bold;
+}
+
+tbody tr{
+  background-color: var(--backgroundSecond);
+}
+
+tbody td{
+  border: none;
+  margin: 1rem 0;
+}
+
+
+.table-header{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+
+  color: black;
+  font-weight: bold;
+  font-size: .9rem;
+
+}
+
+.voo-result-label{
+  color: white;
+  padding: .3rem 0;
+  /* padding: 1px; */
+}
+
+.red{
+  background-color: red;
+}
+
+.green{
+  background-color: green;
+}
+
+.resultado-voo{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  align-items: center;
+
+  
+  background-color: var(--backgroundSecond);
+  margin: .1rem 0;
+  padding: .5rem .3rem;
+  box-sizing: border-box;
+
+  color: black;
+  font-weight: bold;
+  font-size: .9rem;
+
+  width: 99%;
+
+  border-radius: .2rem;
+}
