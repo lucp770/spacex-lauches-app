@@ -137,6 +137,10 @@ body{
   padding: .2rem .3rem;
 }
 
+.current{
+  filter: brightness(1.3);
+}
+
 .result-footer span:hover{
   cursor: pointer;
   filter: brightness(1.3);

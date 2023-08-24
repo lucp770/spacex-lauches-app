@@ -36,13 +36,65 @@ function App() {
       .catch(err => alert('Erro ao buscar dados: ' + err));
   },[])
 
-    let dados, totalDocs, page, hasNext, hasPrev;
+
+  // Properties of this component.
+
+    let dados, totalDocs, page, hasNext, hasPrev, paginationList;
+    let spanListTemplate;
     if(apiData){
 
         ({totalDocs, page, hasNext, hasPrev} = apiData);
 
         console.log({totalDocs, page, hasNext, hasPrev});
+        
+        // get the counter:
+        let auxArray = Array.from({length: totalDocs}, (value, idx)=> idx);
+        if(page ==0){
+          // aux = [1,2,totalDocs-1];
+          spanListTemplate = (`
+          <span className = "current">1</span>
+          <span>2</span>
+          ...
+          <span>${totalDocs}</span>
+          `);
+          
+        }else if(page == (totalDocs -1)){
+          // aux = [1, totalDocs-2, totalDocs-1];
+          spanListTemplate = `
+          <span>1</span>
+          ...
+          <span>${totalDocs-2}</span>
+          <span className = "current">${totalDocs-1}</span>
+          `;
 
+        }else{
+          // aux = [1,page-1, page, page+1,totalDocs-1];
+          spanListTemplate = `
+          <span>1</span>
+          ...
+          <span>${page-1}</span>
+          <span className = "current">${page}</span>
+          <span>${page+1}</span>
+          ...
+          <span>${totalDocs -1}</span>
+          `;
+
+        }
+
+        // [previews, current, next,... last]
+
+        paginationList = auxArray.map(obj => `<span className=" ${(obj == page? "current ": "available ")}">${obj}</span>`);
+        console.log({paginationList});
+        
+        /*
+        paginationList = [
+          <span className = 'selected'>1<span>,
+          <span>2<span>,
+          <span>3<span>,
+        ] 
+        
+
+        */
         dados = apiData.results.map(obj=> {
           let resultado = (obj.success? 'Sucesso' : 'Falha');
           let date = new Date(obj.date_utc);
@@ -60,7 +112,7 @@ function App() {
 
       let totalDocs =1, page =0, hasNext = false, hasPrev = false;
     }
-    
+
     let chartData = [
       ["Foguete", "nLancamentos"],
       ["used Falcon 9", 60],
@@ -69,7 +121,7 @@ function App() {
       ["Falcon Heavy", 10],
     ];
     
-      console.log({dados})
+      // console.log({dados})
 
   return (
     <div className="App">
@@ -96,12 +148,8 @@ function App() {
               return (<ResultadoVoo data = {dataObj}/>);
             })}
 
-        <div className='result-footer'>
-            {/* {Array(totalDocs).fill(0).map(elem => (<span>{elem}</span>))} */}
-          <span> 1</span>
-          <span> 2 </span>
-          ...
-          <span> {totalDocs}</span>
+        <div className='result-footer' dangerouslySetInnerHTML={{ __html: spanListTemplate}}>
+    
         </div>
 
       </div>
@@ -123,6 +171,7 @@ components:
   
 -receber dados da API.
 	-se dados sao recebidos mostrar, caso contrario mostrar algum template.
+
 -verificar o sistema de paginação. Preencher o número de paginas de acordo com os dados da API.
 -implementar sistema de busca, para buscar os novos dados da API ao clicar no botao 'Buscar"
 
